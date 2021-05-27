@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+          <legend class="card-title">New item</legend>
+
+          <div>
+            {{ form.name.label(class="form-label") }}
+            {% if form.name.errors %}
+              {{ form.name(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.name.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.name(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div>
+            {{ form.url.label(class="form-label") }}
+            {% if form.url.errors %}
+              {{ form.url(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.url.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.url(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div>
+            {{ form.current_price.label(class="form-label") }}
+            <div class="input-group{% if form.current_price.errors %} has-validation{% endif %}">
+              {% if form.current_price.errors %}
+                {{ form.current_price(class="form-control is-invalid") }}
+              {% else %}
+                {{ form.current_price(class="form-control") }}
+              {% endif %}
+              {% if form.currency.errors %}
+                {{ form.currency(class="currency form-select is-invalid") }}
+              {% else %}
+                {{ form.currency(class="currency form-select") }}
+              {% endif %}
+              {% if form.current_price.errors %}
+                <div class="invalid-feedback">
+                  {% for error in form.current_price.errors %}
+                    {{ error }}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div>
+            <div class="form-check">
+              {% if form.notify_user.errors %}
+                {{ form.notify_user(class="form-check-input is-invalid") }}
+              {% else %}
+                {{ form.notify_user(class="form-check-input") }}
+              {% endif %}
+              {{ form.notify_user.label(class="form-check-label") }}
+            </div>
+
+            <div id="notificationChoice" style="display: none;">
+            {% for subfield in form.notification_choice %}
+              <div class="form-check">
+                {% if form.notification_choice.errors %}
+                  {{ subfield(class="form-check-input is-invalid") }}
+                {% else %}
+                  {{ subfield(class="form-check-input") }}
+                {% endif %}
+                {{ subfield.label(class="form-check-label") }}
+              </div>
+            {% endfor %}
+
+            {{ form.target_price.label(class="form-label") }}
+              <div class="input-group{% if form.target_price.errors %} has-validation{% endif %}">
+                {% if form.target_price.errors %}
+                  {{ form.target_price(class="form-control is-invalid") }}
+                {% else %}
+                  {{ form.target_price(class="form-control") }}
+                {% endif %}
+                <span class="currency input-group-text" id="currencyAddon"></span>
+                {% if form.target_price.errors %}
+                  <div class="invalid-feedback">
+                    {% for error in form.target_price.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        {{ form.submit(class="btn btn-primary") }}
+      </form>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block script %}
+  <script type="module" src="{{ url_for('static', filename='js/item.js') }}" type="text/javascript"></script>
+{% endblock script %}

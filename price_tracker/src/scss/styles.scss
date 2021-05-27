@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+$font-family-sans-serif: "Nunito Sans", sans-serif;
+$primary: #00bf5f;
+$danger: #bf3f3f;
+$body-bg: #fafafa;
+$link-color: #0d6efd;
+$link-decoration: none;
+$link-hover-decoration: underline;
+$navbar-bg-color: #0f2f1f;
+$navbar-dark-color: rgba(#fff, .80);
+$navbar-dark-hover-color: #fff;
+$navbar-brand-padding-y: 0;
+// $navbar-padding-y: 0.25rem;
+$container-max-widths: (
+  sm: 440px,
+  md: 540px,
+  lg: 660px,
+  xl: 800px,
+  xxl: 960px
+);
+$input-group-addon-bg: #efefef;
+
+@import "../bootstrap-5.0.0-beta1/scss/functions";
+@import "../bootstrap-5.0.0-beta1/scss/variables";
+@import "../bootstrap-5.0.0-beta1/scss/mixins";
+
+
+// Optional
+@import "../bootstrap-5.0.0-beta1/scss/utilities";
+
+@import "../bootstrap-5.0.0-beta1/scss/root";
+@import "../bootstrap-5.0.0-beta1/scss/reboot";
+@import "../bootstrap-5.0.0-beta1/scss/type";
+// @import "../bootstrap-5.0.0-beta1/scss/images";
+@import "../bootstrap-5.0.0-beta1/scss/containers";
+@import "../bootstrap-5.0.0-beta1/scss/grid";
+// @import "../bootstrap-5.0.0-beta1/scss/tables";
+@import "../bootstrap-5.0.0-beta1/scss/forms";
+@import "../bootstrap-5.0.0-beta1/scss/buttons";
+@import "../bootstrap-5.0.0-beta1/scss/transitions";
+// @import "../bootstrap-5.0.0-beta1/scss/dropdown";
+// @import "../bootstrap-5.0.0-beta1/scss/button-group";
+@import "../bootstrap-5.0.0-beta1/scss/nav";
+@import "../bootstrap-5.0.0-beta1/scss/navbar";
+// @import "../bootstrap-5.0.0-beta1/scss/card";
+// @import "../bootstrap-5.0.0-beta1/scss/accordion";
+// @import "../bootstrap-5.0.0-beta1/scss/breadcrumb";
+// @import "../bootstrap-5.0.0-beta1/scss/pagination";
+// @import "../bootstrap-5.0.0-beta1/scss/badge";
+@import "../bootstrap-5.0.0-beta1/scss/alert";
+// @import "../bootstrap-5.0.0-beta1/scss/progress";
+// @import "../bootstrap-5.0.0-beta1/scss/list-group";
+@import "../bootstrap-5.0.0-beta1/scss/close";
+// @import "../bootstrap-5.0.0-beta1/scss/toasts";
+@import "../bootstrap-5.0.0-beta1/scss/modal";
+// @import "../bootstrap-5.0.0-beta1/scss/tooltip";
+// @import "../bootstrap-5.0.0-beta1/scss/popover";
+// @import "../bootstrap-5.0.0-beta1/scss/carousel";
+// @import "../bootstrap-5.0.0-beta1/scss/spinners";
+
+@import "../bootstrap-5.0.0-beta1/scss/helpers";
+
+@import "../bootstrap-5.0.0-beta1/scss/utilities/api";
+
+
+$btn-color: #fff;
+
+
+img {
+    max-height: 1.5rem;
+}
+
+
+.btn-primary {
+    $background: $primary;
+    $border: $primary;
+    $color: $btn-color;
+    $hover-background: if($color == $color-contrast-light, shade-color($background, 15%), tint-color($background, 15%));
+    $hover-border: if($color == $color-contrast-light, shade-color($border, 20%), tint-color($border, 10%));
+    $hover-color: $btn-color;
+    $active-background: if($color == $color-contrast-light, shade-color($background, 20%), tint-color($background, 20%));
+    $active-border: if($color == $color-contrast-light, shade-color($border, 25%), tint-color($border, 10%));
+    $active-color: $btn-color;
+    $disabled-background: $background;
+    $disabled-border: $border;
+    $disabled-color: $btn-color;
+
+    color: $btn-color;
+    @include gradient-bg($background);
+    border-color: $border;
+    @include box-shadow($btn-box-shadow);
+
+    &:hover {
+        color: $btn-color;
+        @include gradient-bg($hover-background);
+        border-color: $hover-border;
+    }
+
+    .btn-check:focus + &,
+    &:focus {
+        color: $hover-color;
+        @include gradient-bg($hover-background);
+        border-color: $hover-border;
+        @if $enable-shadows {
+            @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($btn-color, $border, 15%), .5));
+        } @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: 0 0 0 $btn-focus-width rgba(mix($btn-color, $border, 15%), .5);
+        }
+    }
+
+    .btn-check:checked + &,
+    .btn-check:active + &,
+    &:active,
+    &.active,
+    .show > &.dropdown-toggle {
+        color: $active-color;
+        background-color: $active-background;
+        // Remove CSS gradients if they're enabled
+        background-image: if($enable-gradients, none, null);
+        border-color: $active-border;
+
+        &:focus {
+            @if $enable-shadows {
+            @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($btn-color, $border, 15%), .5));
+            } @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: 0 0 0 $btn-focus-width rgba(mix($btn-color, $border, 15%), .5);
+            }
+        }
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $disabled-color;
+        background-color: $disabled-background;
+        // Remove CSS gradients if they're enabled
+        background-image: if($enable-gradients, none, null);
+        border-color: $disabled-border;
+    }
+}
+
+
+nav {
+    background-color: $navbar-bg-color;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    // z-index: $zindex-fixed;
+}
+
+.nav-link {
+    display: block;
+    padding: $nav-link-padding-y $nav-link-padding-x;
+    @include font-size($nav-link-font-size);
+    font-weight: $nav-link-font-weight;
+    color: $nav-link-color;
+    text-decoration: if($link-decoration == none, null, none);
+    @include transition($nav-link-transition);
+
+    &:hover,
+    &:focus {
+        color: $nav-link-hover-color;
+        text-decoration: if($link-hover-decoration == underline, none, null);
+    }
+
+    // Disabled state lightens text
+    &.disabled {
+        color: $nav-link-disabled-color;
+        pointer-events: none;
+        cursor: default;
+    }
+}
+
+
+.navbar-brand {
+    display: flex;
+}
+
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+    height: $card-height;
+    word-wrap: break-word;
+    background-color: $card-bg;
+    background-clip: border-box;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: $card-spacer-y $card-spacer-x;
+    color: $card-color;
+  }
+
+.card-body, fieldset, form {
+    > *:not(.modal-body) {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    .currency {
+        min-width: 12rem;
+        max-width: 12rem;
+    }
+}
+
+
+
+
+.info-row {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    color: #2f2f2f;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+}
+
+.item-list {
+    margin-bottom: 1rem;
+
+    > * {
+        margin-bottom: 0.5rem;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    .card-title {
+        flex-grow: 1;
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        > * {
+            margin: 0;
+            margin-right: 1rem;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .btn-close {
+        z-index: 9;
+    }
+}
+
+.url {
+    @include text-truncate();
+}
+
+.btn-group {
+    display: inline-flex;
+
+    > * {
+        margin-right: 0.5rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

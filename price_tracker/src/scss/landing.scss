@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600&display=swap');
+
+$primary: #00bf5f;
+$primary-75: #008f47;
+
+$bold: 600;
+$light: 300;
+
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: $light;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    transition: background 100ms, color 100ms;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+
+.first {
+    margin-top: 0 !important;
+}
+
+.last {
+    margin-bottom: 0 !important;
+}
+
+.background {
+    background: url('../../static/img/illustration.svg'),
+    #eff7ff;
+    background-position: bottom right;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: calc(54vw + 8rem);
+}
+
+.max-width {
+    width: 100%;
+}
+
+.navbar {
+    padding: 0.5rem 0;
+}
+
+.brand-logo {
+    max-height: 1.5rem;
+}
+
+.navbar-nav {
+    display: flex;
+}
+
+.nav-link {
+    color: #0000007f;
+    padding: 0.5rem;
+
+    &:hover,
+    &:focus {
+        color: #000000bf;
+    }
+}
+
+.headline {
+    font-size: 10vw;
+    font-weight: $bold;
+    margin: calc(32vh - 48vw) 0 3vh 0;
+}
+
+.subheadline {
+    font-size: 5vw;
+    margin-bottom: 5vh;
+}
+
+.button, .pill {
+    background: $primary;
+    color: #ffffff;
+    font-weight: $bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover,
+    &:focus {
+        background: $primary-75;
+    }
+}
+
+.button {
+    font-size: 2rem;
+    padding: 2rem 5rem;
+    text-transform: uppercase;
+}
+
+.pill {
+    border-radius: 50rem;
+    font-size: 1.2rem;
+    padding: 0.6rem 0.6rem 0.6rem 1.2rem;
+    width: 10.8rem;
+
+    > svg {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+
+.info__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6rem 0;
+
+    h2 {
+        font-weight: $bold;
+        margin-top: 0;
+    }
+
+    img {
+        max-height: 9rem;
+        max-width: 75vw;
+    }
+
+    &.reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+.info__text {
+    align-self: flex-start;
+    margin-bottom: 2rem;
+}
+
+
+.title {
+    font-size: 9vw;
+    font-weight: $bold;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.how-it-works__group {
+    display: flex;
+    align-items: center;
+    margin: 3rem 0;
+
+    h3 {
+        font-weight: $bold;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    > .icon {
+        margin-right: 2rem;
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    max-height: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+
+    > * {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+}
+
+
+.call-to-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+    width: 100%;
+
+    a {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 576px) {
+    .background {
+        background-size: 120%;
+    }
+
+    .headline {
+        font-size: 4rem;
+        margin: 9vh 0 3vh 0;
+    }
+
+    .subheadline {
+        font-size: 1.8rem;
+        margin-bottom: 6vh;
+    }
+
+    .title {
+        font-size: calc(4.5vw + 1rem);
+    }
+
+    .icon {
+        background: $primary;
+        border-radius: 50rem;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4rem;
+        max-height: 4rem;
+        min-width: 4rem;
+        max-width: 4rem;
+    }
+}
+
+
+@media (min-width: 992px) {
+    html {
+        font-size: 1.2rem;
+    }
+
+    .info__group {
+        flex-direction: row;
+        margin: 8rem 0;
+
+        &.reverse {
+            flex-direction: unset;
+        }
+
+        > * {
+            width: 45%;
+        }
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+}
+
+
+@media (orientation: landscape) {
+    html {
+        font-size: 1rem;
+    }
+
+    .background {
+        background-size: cover;
+    }
+
+    .headline {
+        font-size: 3rem;
+    }
+
+    .subheadline {
+        font-size: 1.25rem;
+    }
+
+    .pill {
+        font-size: 1rem;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        width: 9rem;
+
+        > svg {
+            height: 1.8rem;
+            width: 1.8rem;
+        }
+    }
+}
+
+
+@media (min-aspect-ratio: 1.8) {
+    .background {
+        background: url('../../static/img/centerillustration.svg');
+        background-position: center right;
+        background-size: cover;
+    }
+}
+
+
+@media (min-width: 2400px) {
+    html {
+        font-size: 1.8rem;
+    }
+}

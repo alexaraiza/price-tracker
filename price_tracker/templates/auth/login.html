@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+          <legend class="card-title">Log in</legend>
+
+          <div>
+            {{ form.email.label(class="form-label") }}
+            {% if form.email.errors %}
+              {{ form.email(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div>
+            {{ form.password.label(class="form-label") }}
+            {% if form.password.errors %}
+              {{ form.password(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div class="form-check">
+            {{ form.remember(class="form-check-input") }}
+            {{ form.remember.label(class="form-check-label") }}
+          </div>
+        </fieldset>
+
+        {{ form.submit(class="btn btn-primary") }}
+      </form>
+
+      <small class="text-muted">
+        <a href="{{ url_for('auth.reset_password_request') }}">Forgot password?</a>
+      </small>
+    </div>
+  </div>
+
+  <small class="text-muted">
+    Don't have an account yet?<a class="ms-2" href="{{ url_for('auth.signup') }}">Sign up</a>
+  </small>
+{% endblock content %}

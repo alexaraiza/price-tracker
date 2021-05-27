@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+          <legend class="card-title">Sign up</legend>
+
+          <div>
+            {{ form.email.label(class="form-label") }}
+            {% if form.email.errors %}
+              {{ form.email(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div>
+            {{ form.password.label(class="form-label") }}
+            {% if form.password.errors %}
+              {{ form.password(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div>
+            {{ form.confirm_password.label(class="form-label") }}
+            {% if form.confirm_password.errors %}
+              {{ form.confirm_password(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.confirm_password(class="form-control") }}
+            {% endif %}
+          </div>
+        </fieldset>
+
+        {{ form.submit(class="btn btn-primary") }}
+      </form>
+    </div>
+  </div>
+
+  <small class="text-muted">
+    Already have an account?<a class="ms-2" href="{{ url_for('auth.login') }}">Log in</a>
+  </small>
+{% endblock content %}
