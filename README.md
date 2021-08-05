@@ -1,8 +1,22 @@
 # Price tracker
 
+A web app to track the price of online items.
+
+![Screenshot](screenshot.png)
+
+## Features
+
+- User authentication
+- Hourly price checking
+- User notifications
+- Support for multiple currencies
+
 ## Technologies
 
-- [Flask](https://flask.palletsprojects.com/)
+#### Front end
 - [HTML5](https://html.spec.whatwg.org/)
 - [SCSS](https://sass-lang.com/)
-- [JavaScript ES6](https://www.w3schools.com/Js/js_es6.asp)
+- [JavaScript](https://www.w3schools.com/js/default.asp)
+
+#### Back end
+- [Flask](https://flask.palletsprojects.com/)
